@@ -7,7 +7,7 @@ edition = "2024"
 anyhow = "1.0.98"
 aoc24 = { git = "https://github.com/cmlccie/advent-of-code", version = "0.5.0" }
 axum = { version = "0.8.4", features = ["macros"] }
-rmcp = { git = "https://github.com/modelcontextprotocol/rust-sdk", branch = "main", features = ["server", "transport-sse-server"] }
+rmcp = { git = "https://github.com/modelcontextprotocol/rust-sdk", features = ["server", "transport-sse-server"], rev = "b9bba0be1513ccc99a6144622e243dd94fcf122e" }
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
 tokio = { version = "1.45.1", features = ["macros", "rt", "rt-multi-thread", "signal"] }
