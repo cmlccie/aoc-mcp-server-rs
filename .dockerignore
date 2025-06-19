@@ -1,6 +1,8 @@
 # Ignore everything
 *
+
 # Include the following files and directories
+!.cargo/config.toml
 !Cargo.toml
 !Cargo.lock
 !src/

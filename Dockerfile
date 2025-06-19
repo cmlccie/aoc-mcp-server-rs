@@ -7,11 +7,22 @@ ARG TARGETPLATFORM
 
 WORKDIR /usr/src
 
+COPY .cargo/config.toml .cargo/config.toml
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src/
 
-RUN RUSTFLAGS="-C target-feature=+crt-static" cargo build --release && \
-    cp target/release/aoc-mcp-server-rs /usr/local/bin/
+RUN case "$TARGETPLATFORM" in \
+      "linux/amd64"*) \
+        TARGET="x86_64-unknown-linux-gnu" ;; \
+      "linux/arm64"*) \
+        TARGET="aarch64-unknown-linux-gnu" ;; \
+      *) \
+        echo "ERROR: Unsupported platform: $TARGETPLATFORM" && \
+        echo "Supported platforms are: linux/amd64, linux/arm64" && \
+        exit 1 ;; \
+    esac && \
+    cargo build --release --target $TARGET && \
+    cp target/$TARGET/release/aoc-mcp-server-rs /usr/local/bin/
 
 
 # --------------------------------------------------------------------------------------
