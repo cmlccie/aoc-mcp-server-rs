@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE: ${{ github.repository }} # owner/repo-name
+  IMAGE: "ghcr.io/${{ github.repository }}" # ghcr.io/{owner}/{repo-name}
 
 jobs:
   build:
